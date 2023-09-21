@@ -1,23 +1,23 @@
-let age: number = 12;
-let fullName: string = "John Doe";
-let isOfAge: boolean = false;
+const age: number = 12;
+const fullName: string = "John Doe";
+const isOfAge: boolean = false;
 let something: any = 3;
 
 something = "string";
 
 // Arrays
-let names: string[] = ["John", "Jane", "Jack"];
+const names: string[] = ["John", "Jane", "Jack"];
 
 //same but different
-let address: string | string[] = ["asda", "as"];
-let whatever: string | string[] = "🤨";
+const address: string | string[] = ["asda", "as"];
+const whatever: string | string[] = "🤨";
 
 // !!! Danger of "any"!!!
-let greeting: any = `3`;
+const greeting: any = `hello`;
 
-let somethingElse: number = <number>greeting;
+const somethingElse = parseInt(greeting);
 
-console.log(typeof somethingElse);
+console.log(typeof somethingElse, somethingElse);
 
 // // Declare a custom type 'User' which can be either a string or an array of strings
 // type User = string | string[];
@@ -32,16 +32,16 @@ type User = {
 };
 
 // funtion that returns a User object with the given parameters and an optional admin parameter that defaults to false if not provided
-const setUser = (id: number, name: string, admin?: boolean): User => {
+const setUser = (user: User): User => {
+  const { id, name, admin = false } = user;
   return {
     id,
     name,
-    // if not provided set to false
-    admin: admin ? admin : false,
+    admin
   };
 };
 
-const user: User = setUser(3, "Bob");
+const user: User = setUser({id: 1, name: "John"});
 
 console.log(user);
 
